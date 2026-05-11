@@ -11,48 +11,64 @@ class AppBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-        borderRadius: BorderRadiusGeometry.circular(24),
-        child: NavigationBar(
-            selectedIndex: currentIndex,
-            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-            destinations: const [
-              NavigationDestination(icon: Icon(LucideIcons.house), label: ''),
-              NavigationDestination(icon: Icon(LucideIcons.house), label: ''),
-              NavigationDestination(icon: Icon(LucideIcons.house), label: ''),
-              NavigationDestination(icon: Icon(LucideIcons.house), label: ''),
-            ])
-        // child: BottomNavigationBar(
+    final icons = [
+      LucideIcons.house,
+      LucideIcons.clipboardPen,
+      LucideIcons.botMessageSquare,
+      LucideIcons.cog,
+    ];
 
-        //   unselectedItemColor: Color(0xFF1A1C1E),
-        //   currentIndex: currentIndex,
-        //   type: BottomNavigationBarType.fixed,
+    return Container(
+      margin: const EdgeInsets.fromLTRB(
+        16,
+        32,
+        16,
+        32,
+      ),
 
-        //   selectedFontSize: 0,
-        //   unselectedFontSize: 0,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 24,
+        vertical: 16,
+      ),
 
-        //   items: const [
-        //     BottomNavigationBarItem(
-        //       icon: Icon(LucideIcons.house),
-        //       label: '',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(LucideIcons.clipboardPen),
-        //       // label: 'Tarefas',
-        //       label: '',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(LucideIcons.botMessageSquare),
-        //       // label: 'Perfil',
-        //       label: '',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(LucideIcons.cog),
-        //       label: '',
-        //       // label: 'Perfil',
-        //     ),
-        //   ],
-        // ),
-        );
+      decoration: BoxDecoration(
+        color: Color(0xFFECF0F3),
+        borderRadius: BorderRadius.circular(24),
+      ),
+
+      child: Row(
+        mainAxisAlignment:
+            MainAxisAlignment.spaceAround,
+
+        children: List.generate(
+          icons.length,
+          (index) {
+            final isSelected =
+                currentIndex == index;
+
+            return Container(
+              padding: const EdgeInsets.all(12),
+
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? const Color(0xFF1A1C1E)
+                    : Colors.transparent,
+
+                borderRadius:
+                    BorderRadius.circular(14),
+              ),
+
+              child: Icon(
+                icons[index],
+
+                color: isSelected
+                    ? Colors.white
+                    : Colors.black54,
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 }

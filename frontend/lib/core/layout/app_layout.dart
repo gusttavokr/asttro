@@ -21,19 +21,19 @@ class AppLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
+      extendBody: true,
       body: Stack(
         children: [
           const AppBackground(),
-          
           SafeArea(
             child: LayoutBuilder(
               builder: (context, constraints) {
+                double maxWidth =
+                    constraints.maxWidth > 500 ? 500 : constraints.maxWidth;
 
-                double maxWidth = constraints.maxWidth > 500 ? 500 : constraints.maxWidth;
-
-                return Center( 
+                return Center(
                   child: SizedBox(
-                    width: maxWidth, 
+                    width: maxWidth,
                     child: Column(
                       children: [
                         // SEARCH BAR
@@ -81,7 +81,7 @@ class AppLayout extends StatelessWidget {
                         // CONTEÚDO
                         Expanded(
                           child: child,
-                        ),                        
+                        ),
                       ],
                     ),
                   ),
@@ -91,9 +91,7 @@ class AppLayout extends StatelessWidget {
           ),
         ],
       ),
-
       bottomNavigationBar: AppBottomBar(currentIndex: currentIndex),
     );
   }
-  
 }

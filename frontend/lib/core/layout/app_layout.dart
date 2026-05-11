@@ -41,6 +41,7 @@ class AppLayout extends StatelessWidget {
                           child: SearchBarApp(),
                         ),
 
+                        const SizedBox(height: 20),
                         // BREADCRUMB
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),

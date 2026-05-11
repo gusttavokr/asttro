@@ -1,4 +1,5 @@
 import 'package:asttro/core/widgets/background.dart';
+import 'package:asttro/core/widgets/bottom_bar.dart';
 import 'package:asttro/core/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -80,11 +81,7 @@ class AppLayout extends StatelessWidget {
                         // CONTEÚDO
                         Expanded(
                           child: child,
-                        ),
-
-
-                        // MENU
-                        
+                        ),                        
                       ],
                     ),
                   ),
@@ -94,6 +91,8 @@ class AppLayout extends StatelessWidget {
           ),
         ],
       ),
+
+      bottomNavigationBar: AppBottomBar(currentIndex: currentIndex),
     );
   }
   

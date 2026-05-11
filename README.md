@@ -2,8 +2,6 @@
 
 O **Asttro** é um aplicativo mobile moderno, construído com Flutter, que transforma o gerenciamento das suas tarefas e do seu dia a dia em uma experiência fluida, bonita e intuitiva. Chega de agendas monótonas: aqui, suas metas ganham gravidade!
 
----
-
 ## ✨ Features
 
 ### ✅ Features Atuais:
@@ -18,8 +16,6 @@ O **Asttro** é um aplicativo mobile moderno, construído com Flutter, que trans
 - 🧮 **Desempenho**: Métricas de desempenho por tarefas concluídas e atrasadas.
 - 👾 **Inteligência Artificial**: IA que analisa suas tarefas, sugere resoluções e ideias de novas tarefas.
 - 🔔 **Notificações**: Notificações em tempo real para acompanhamento das tarefas pendentes.
-
----
 
 ## 🛠️ Tecnologias Utilizadas 
 

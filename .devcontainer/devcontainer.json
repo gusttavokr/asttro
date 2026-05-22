@@ -1,6 +1,6 @@
 {
   "name": "Flutter",
-  "image": "://microsoft.com",
+  "image": "ghcr.io/cirruslabs/flutter:stable",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -8,6 +8,5 @@
         "Dart-Code.flutter"
       ]
     }
-  },
-  "postCreateCommand": "flutter doctor"
+  }
 }

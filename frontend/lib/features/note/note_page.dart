@@ -37,8 +37,8 @@ class NotePageState extends State<NotePage>{
   @override
   Widget build(BuildContext context) {
     return AppLayout(
-      breadcrumb: 'Olá, Gustavo 👋',
-      title: 'Suas tarefas pendentes:',
+      breadcrumb: 'No que está pensando? 🤔',
+      title: 'Suas anotações:',
       currentIndex: 0,
       onSearch: searchNotes,
       child: filteredNotes.isEmpty

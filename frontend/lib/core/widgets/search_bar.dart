@@ -1,46 +1,35 @@
 import 'package:flutter/material.dart';
 
-class SearchBarApp extends StatefulWidget {
-  const SearchBarApp({super.key});
+class SearchTask extends StatelessWidget {
 
-  @override
-  State<SearchBarApp> createState() => _SearchBarAppState();
-}
+  final Function(String)? onSearch;
 
-class _SearchBarAppState extends State<SearchBarApp> {
-  // Você usa um TextEditingController normal em vez de um SearchController
-  final TextEditingController _controller = TextEditingController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  const SearchTask({
+    super.key,
+    required this.onSearch,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: _controller,
-      style: const TextStyle(color: Colors.white), 
-      cursorColor: Colors.white.withValues(alpha: 0.5),// Cor do texto digitado
-      decoration: InputDecoration(
-        hintText: 'Pesquisar tarefa...',
-        hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
-        prefixIcon: const Icon(Icons.search, color: Colors.white),
-        filled: true,
-        fillColor: Colors.white.withValues(alpha: 0.1), // Cor de fundo da barra
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide.none, // Remove a linha feia embaixo
-        ),
+    return Padding(
+      padding: const EdgeInsets.all(16),
 
-        
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: TextField(
+        onChanged: onSearch,
+
+        decoration: InputDecoration(
+          hintText: 'Buscar tarefa...',
+          prefixIcon: const Icon(Icons.search),
+
+          filled: true,
+          fillColor: Colors.white,
+
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide.none,
+          ),
+        ),
       ),
-      onChanged: (value) {
-        // O que acontece quando o usuário digita
-        print('Pesquisando por: $value');
-      },
     );
   }
 }

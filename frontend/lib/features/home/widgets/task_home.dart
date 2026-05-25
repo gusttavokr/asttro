@@ -1,13 +1,12 @@
+import 'package:asttro/features/home/models/tasks.dart';
 import 'package:flutter/material.dart';
 
 class Task extends StatelessWidget {
-  final String title;
-  final IconData icon;
+  final TaskModel task;
 
   const Task({
     super.key,
-    required this.title,
-    required this.icon,
+    required this.task,
   });
 
   @override
@@ -16,7 +15,7 @@ class Task extends StatelessWidget {
       padding: const EdgeInsets.all(12),
 
       decoration: BoxDecoration(
-        color: Color(0xFFECF0F3),
+        color: const Color(0xFFECF0F3),
         borderRadius: BorderRadius.circular(24),
       ),
 
@@ -28,12 +27,12 @@ class Task extends StatelessWidget {
             height: 50,
 
             decoration: BoxDecoration(
-              color: Color(0xFF1A1C1E),
-              borderRadius: BorderRadius.circular(14)
+              color: const Color(0xFF1A1C1E),
+              borderRadius: BorderRadius.circular(14),
             ),
 
             child: Icon(
-              icon,
+              task.icon,
               color: Colors.white,
               size: 32,
             ),
@@ -42,20 +41,19 @@ class Task extends StatelessWidget {
           const SizedBox(width: 20),
 
           Column(
-            children: [ 
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Text(
-                title,
+                task.title,
                 style: const TextStyle(
                   color: Color(0xFF1A1C1E),
                   fontSize: 18,
-                  fontWeight: FontWeight(600),
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
           ),
-      
-          const SizedBox(height: 8),
-        ],  
+        ],
       ),
     );
   }

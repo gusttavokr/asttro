@@ -8,6 +8,7 @@ class AppLayout extends StatelessWidget {
   final String title;
   final Widget child;
   final int currentIndex;
+  final Function(String)? onSearch;
 
   const AppLayout({
     super.key,
@@ -15,6 +16,7 @@ class AppLayout extends StatelessWidget {
     required this.title,
     required this.child,
     this.currentIndex = 0,
+    this.onSearch,
   });
 
   @override
@@ -37,9 +39,9 @@ class AppLayout extends StatelessWidget {
                     child: Column(
                       children: [
                         // SEARCH BAR
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.all(16),
-                          child: SearchBarApp(),
+                          child: SearchTask(onSearch: onSearch),
                         ),
 
                         const SizedBox(height: 20),

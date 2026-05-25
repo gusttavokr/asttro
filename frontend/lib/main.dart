@@ -1,4 +1,4 @@
-import 'package:asttro/features/home/home.dart';
+import 'package:asttro/features/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

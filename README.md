@@ -7,8 +7,7 @@ O **Asttro** é um aplicativo mobile moderno, construído com Flutter, que trans
 ### ✅ Features Atuais:
 
 - 🌌 **Interface Imersiva**: Um design system escuro pensado para ser leve nos olhos e agradável de usar.
-- 🎯 **Gerenciamento Descomplicado**: Adicione, edite e conclua tarefas com facilidade.
-- 🔍 **Busca Dinâmica**: Precisa achar algo rápido? A barra de pesquisa estelar está sempre no topo.
+- 🎯 **Gerenciamento Descomplicado**: Adicione, edite e conclua tarefas e anotações com facilidade.
 - 🚀 **Navegação Limpa**: Sem excessos. Apenas o que importa.
 
 ### 🚧 Features Futuras

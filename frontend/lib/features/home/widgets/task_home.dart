@@ -15,7 +15,7 @@ class Task extends StatelessWidget {
       padding: const EdgeInsets.all(12),
 
       decoration: BoxDecoration(
-        color: const Color(0xFFECF0F3),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(24),
       ),
 

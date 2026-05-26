@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SearchTask extends StatelessWidget {
-
   final Function(String)? onSearch;
 
   const SearchTask({
@@ -11,23 +10,35 @@ class SearchTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
+    return TextField(
+      onChanged: onSearch,
+      style: const TextStyle(
+        color: Colors.white,
+      ),
+      cursorColor: Colors.white.withValues(alpha: 0.5),
+      decoration: InputDecoration(
+        hintText: 'Pesquisar tarefa...',
 
-      child: TextField(
-        onChanged: onSearch,
+        hintStyle: TextStyle(
+          color: Colors.white.withValues(alpha: 0.5),
+        ),
 
-        decoration: InputDecoration(
-          hintText: 'Buscar tarefa...',
-          prefixIcon: const Icon(Icons.search),
+        prefixIcon: const Icon(
+          Icons.search,
+          color: Colors.white,
+        ),
 
-          filled: true,
-          fillColor: Colors.white,
+        filled: true,
 
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide.none,
-          ),
+        fillColor: Colors.white.withValues(alpha: 0.1),
+
+        // contentPadding: const EdgeInsets.symmetric(
+        //   horizontal: 16,
+        // ),
+
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide.none,
         ),
       ),
     );

@@ -25,47 +25,38 @@ class AppBottomBar extends StatelessWidget {
         16,
         32,
       ),
-
       padding: const EdgeInsets.symmetric(
         horizontal: 12,
         vertical: 12,
       ),
-
       decoration: BoxDecoration(
         // color: Color(0XFFFEFDFB),
         color: Color(0xFF1C1C28),
         // color: Color(0xFF1C1C28),
         borderRadius: BorderRadius.circular(24),
       ),
-
       child: Row(
-        mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
-
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(
           icons.length,
           (index) {
-            final isSelected =
-                currentIndex == index;
+            final isSelected = currentIndex == index;
 
             return Container(
               padding: const EdgeInsets.all(12),
-
               decoration: BoxDecoration(
-                color: isSelected
-                    ? const Color(0xFF09080E)
-                    : Colors.transparent,
-
-                borderRadius:
-                    BorderRadius.circular(14),
+                color:
+                    isSelected ? const Color(0xFF09080E) : Colors.transparent,
+                border: !isSelected
+                    ? Border.all(
+                        color: Colors.white.withValues(alpha: 0.1),
+                      )
+                    : null,
+                borderRadius: BorderRadius.circular(14),
               ),
-
               child: Icon(
                 icons[index],
-
-                color: isSelected
-                    ? Color(0xFFFEFDFB)
-                    : Color(0xFFFEFDFB),
+                color: isSelected ? Color(0xFFFEFDFB) : Color(0xFFFEFDFB),
               ),
             );
           },

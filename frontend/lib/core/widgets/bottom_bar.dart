@@ -27,12 +27,14 @@ class AppBottomBar extends StatelessWidget {
       ),
 
       padding: const EdgeInsets.symmetric(
-        horizontal: 24,
-        vertical: 16,
+        horizontal: 12,
+        vertical: 12,
       ),
 
       decoration: BoxDecoration(
-        color: Color(0xFFECF0F3),
+        // color: Color(0XFFFEFDFB),
+        color: Color(0xFF1C1C28),
+        // color: Color(0xFF1C1C28),
         borderRadius: BorderRadius.circular(24),
       ),
 
@@ -51,7 +53,7 @@ class AppBottomBar extends StatelessWidget {
 
               decoration: BoxDecoration(
                 color: isSelected
-                    ? const Color(0xFF1A1C1E)
+                    ? const Color(0xFF09080E)
                     : Colors.transparent,
 
                 borderRadius:
@@ -62,8 +64,8 @@ class AppBottomBar extends StatelessWidget {
                 icons[index],
 
                 color: isSelected
-                    ? Colors.white
-                    : Colors.black54,
+                    ? Color(0xFFFEFDFB)
+                    : Color(0xFFFEFDFB),
               ),
             );
           },

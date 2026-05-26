@@ -30,7 +30,7 @@ class SearchTask extends StatelessWidget {
 
         filled: true,
 
-        fillColor: Colors.white.withValues(alpha: 0.1),
+        fillColor: Color(0xFF1C1C28),
 
         // contentPadding: const EdgeInsets.symmetric(
         //   horizontal: 16,

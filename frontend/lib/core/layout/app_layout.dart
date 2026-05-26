@@ -53,7 +53,7 @@ class AppLayout extends StatelessWidget {
                             child: Text(
                               breadcrumb,
                               style: const TextStyle(
-                                color: Colors.white,
+                                color: Color(0xFFFEFDFB),
                                 fontSize: 14,
                               ),
                             ),
@@ -72,7 +72,7 @@ class AppLayout extends StatelessWidget {
                               style: const TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                                color: Color(0xFFFEFDFB),
                               ),
                             ),
                           ),

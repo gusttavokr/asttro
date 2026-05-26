@@ -19,11 +19,11 @@ class AppBottomBar extends StatelessWidget {
     ];
 
     return Container(
-      margin: const EdgeInsets.fromLTRB(
-        16,
-        32,
-        16,
-        32,
+    
+      margin: const EdgeInsets.only(
+        left: 16,
+        right: 16,
+        bottom: 32,
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: 12,

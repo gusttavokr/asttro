@@ -1,5 +1,6 @@
 import 'package:asttro/core/layout/app_layout.dart';
 import 'package:asttro/features/home/models/tasks.dart';
+import 'package:asttro/features/home/widgets/button_create_task.dart';
 import 'package:asttro/features/home/widgets/task_home.dart';
 import 'package:flutter/material.dart';
 
@@ -42,22 +43,33 @@ class HomePageState extends State<HomePage>{
       title: 'Suas tarefas pendentes:',
       currentIndex: 0,
       onSearch: searchTasks,
-      child: filteredTasks.isEmpty
-        ? const Center(
-          child: Text(
-            'Nenhuma tarefa encontrada',
-          ),
-        )
-      : ListView.separated(
-        padding: const EdgeInsets.all(16),
-        itemCount: filteredTasks.length,
-        separatorBuilder: (_, __) => const SizedBox(height: 16),
-        itemBuilder: (context, index) {
-          final task = filteredTasks[index];
+      child: Column(
+        children: [
+          Expanded(
+            child: filteredTasks.isEmpty
+              ? const Center(
+                child: Text(
+                  'Nenhuma tarefa encontrada',
+                ),
+              )
+            : ListView.separated(
+              padding: const EdgeInsets.all(16),
+              itemCount: filteredTasks.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 16),
+              itemBuilder: (context, index) {
+                final task = filteredTasks[index];
 
-          return Task(task: task);
-        },
-      ),
+                return Task(task: task);
+              },
+            ),
+          ), 
+
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: ButtonCreateTask(),
+          ),
+        ],
+      )
     );
   }
 }

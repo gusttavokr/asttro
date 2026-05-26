@@ -70,7 +70,7 @@ class AppLayout extends StatelessWidget {
                             child: Text(
                               title,
                               style: const TextStyle(
-                                fontSize: 28,
+                                fontSize: 24,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xFFFEFDFB),
                               ),

@@ -43,7 +43,7 @@ class Task extends StatelessWidget {
                 task.title,
                 style: TextStyle(
                   color: Color(0xFFFEFDFB),
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
               ),

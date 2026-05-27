@@ -11,6 +11,7 @@ class Task extends StatefulWidget {
 
 class TaskState extends State<Task> {
   late TextEditingController _controller;
+  final FocusNode _focusNode = FocusNode(); // 1. TRAGA O FOCO PARA CÁ
 
   @override
   void initState() {
@@ -21,48 +22,56 @@ class TaskState extends State<Task> {
   @override
   void dispose() {
     _controller.dispose();
+    _focusNode.dispose(); // 2. SEMPRE DISPOSE O FOCO
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Color(0xFF1C1C28),
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextField(
-                  controller: _controller,
+    // 3. ENVOLVA O CONTAINER NO GESTURE DETECTOR
+    return GestureDetector(
+      onTap: () {
+        // Isso força a abertura do teclado independente de onde você clique no Container
+        FocusScope.of(context).requestFocus(_focusNode);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: const Color(0xFF1C1C28),
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start, // 4. Mude para 'start' para o alinhamento não ficar centralizado enquanto digita!
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                   // Opcionlamente, você também pode usar 'Expanded' diretamente no TextField se quiser que
+                   // ele empurre pra baixo toda a barra vazia, mas o FocusNode é a melhor alternativa!
 
-                  minLines: 1,
-                  maxLines: null,
-                  keyboardType: TextInputType.multiline,
-
-                  // Mantendo o mesmo estilo visual de antes:
-                  style: const TextStyle(
-                    color: Color(0xFFFEFDFB),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
+                  TextField(
+                    focusNode: _focusNode, // 5. LIGUE O TEXTFIELD AO FOCO
+                    controller: _controller,
+                    minLines: 1,
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    style: const TextStyle(
+                      color: Color(0xFFFEFDFB),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(16),
+                    ),
                   ),
-
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    isDense: true,
-                    contentPadding: EdgeInsets.all(16),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

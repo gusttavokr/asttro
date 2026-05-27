@@ -25,6 +25,15 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Asttro',
         theme: ThemeData(
+          scaffoldBackgroundColor: const Color(0xFF09080E), 
+
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(), // Pode trocar por CupertinoPageTransitionsBuilder se preferir o estilo iOS
+              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+            },
+          ),
+
           fontFamily: 'Inter',
           useMaterial3: true,
 

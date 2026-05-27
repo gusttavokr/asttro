@@ -14,9 +14,7 @@ class Task extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.white.withValues(alpha: 0.1),
-        ),
+      color: Color(0xFF1C1C28),
         borderRadius: BorderRadius.circular(24),
       ),
       child: Row(
@@ -24,9 +22,11 @@ class Task extends StatelessWidget {
         children: [
           Container(
             width: 50,
-            height: 40,
+            height: 45,
             decoration: BoxDecoration(
-              color: Color(0xFF1C1C28),
+              border: Border.all(
+                color: Colors.white.withValues(alpha: 0.1),
+              ),
               borderRadius: BorderRadius.circular(14),
             ),
             child: Icon(

@@ -3,10 +3,12 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 class AppBottomBar extends StatelessWidget {
   final int currentIndex;
+  final Function(int) onTap;
 
   const AppBottomBar({
     super.key,
     required this.currentIndex,
+    required this.onTap,
   });
 
   @override
@@ -19,7 +21,6 @@ class AppBottomBar extends StatelessWidget {
     ];
 
     return Container(
-    
       margin: const EdgeInsets.only(
         left: 16,
         right: 16,
@@ -42,21 +43,24 @@ class AppBottomBar extends StatelessWidget {
           (index) {
             final isSelected = currentIndex == index;
 
-            return Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color:
-                    isSelected ? const Color(0xFF09080E) : Colors.transparent,
-                border: !isSelected
-                    ? Border.all(
-                        color: Colors.white.withValues(alpha: 0.1),
-                      )
-                    : null,
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Icon(
-                icons[index],
-                color: isSelected ? Color(0xFFFEFDFB) : Color(0xFFFEFDFB),
+            return GestureDetector(
+              onTap: () => onTap(index),
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color:
+                      isSelected ? const Color(0xFF09080E) : Colors.transparent,
+                  border: !isSelected
+                      ? Border.all(
+                          color: Colors.white.withValues(alpha: 0.1),
+                        )
+                      : null,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Icon(
+                  icons[index],
+                  color: isSelected ? Color(0xFFFEFDFB) : Color(0xFFFEFDFB),
+                ),
               ),
             );
           },

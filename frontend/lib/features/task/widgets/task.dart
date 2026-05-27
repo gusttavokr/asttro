@@ -51,6 +51,7 @@ class TaskState extends State<Task> {
                    // ele empurre pra baixo toda a barra vazia, mas o FocusNode é a melhor alternativa!
 
                   TextField(
+                    cursorColor: Color(0xFFFFFFFF),
                     focusNode: _focusNode, // 5. LIGUE O TEXTFIELD AO FOCO
                     controller: _controller,
                     minLines: 1,

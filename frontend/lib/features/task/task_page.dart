@@ -1,6 +1,6 @@
 import 'package:asttro/core/layout/app_layout.dart';
-import 'package:asttro/features/home/models/tasks.dart';
-import 'package:asttro/features/home/widgets/task_home.dart';
+import 'package:asttro/features/task/models/task.dart';
+import 'package:asttro/features/task/widgets/task.dart';
 import 'package:flutter/material.dart';
 
 class TaskPage extends StatefulWidget {
@@ -32,14 +32,19 @@ class TaskPageState extends State<TaskPage> {
 
   @override
   Widget build(BuildContext context) {
-    TaskModel task = TaskModel(title: "Teste", icon: Icons.drafts);
 
     return AppLayout(
-      breadcrumb: 'Olá, Gustavo 👋',
+      breadcrumb: 'Início > Tarefa',
       title: task.title,
       currentIndex: 1,
-      child: 
-        Task(task: task)
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 16,
+          right: 16,
+          bottom: 32,
+          ),
+        child: Task(task: task),
+      ),
     );
   }
 }

@@ -5,15 +5,17 @@ class TaskModel {
   final String title;
   final IconData icon;
   final String content;
-  final DateTime date;
   final Status status;
+  final DateTime dateCreate;
+  final DateTime? dateFinal;
 
   TaskModel({
     required this.title,
     required this.icon,
     required this.content,
-    required this.date,
     required this.status,
+    required this.dateCreate,
+    this.dateFinal,
   });
 }
 
@@ -22,7 +24,7 @@ final tasks = [
     title: "Protótipo Mobile",
     content:
         "Preciso entregar 10 protótipos para o trabalho de Desenvolvimento de dispositivos móveis",
-    date: DateTime(2026, 12, 25),
+    dateCreate: DateTime(2026, 12, 25),
     status: Status.emAndamento,
     icon: Icons.people,
   ),
@@ -31,7 +33,7 @@ final tasks = [
     title: "Teste de Software",
     content:
         "Preciso estudar.",
-    date: DateTime(2026, 12, 25),
+    dateCreate: DateTime(2026, 12, 25),
     status: Status.emAndamento,
     icon: Icons.psychology,
   ),
@@ -40,7 +42,7 @@ final tasks = [
     title: "Árvore AVL",
     content:
         "Preciso implementar o balanceamento da árvore AVL",
-    date: DateTime(2026, 12, 25),
+    dateCreate: DateTime(2026, 12, 25),
     status: Status.emAndamento,
     icon: Icons.people,
   ),
@@ -49,7 +51,7 @@ final tasks = [
     title: "Doar sangue",
     content:
         "Preciso doar sangue na terça feira.",
-    date: DateTime(2026, 12, 25),
+    dateCreate: DateTime(2026, 12, 25),
     status: Status.emAndamento,
     icon: Icons.psychology,
   ),

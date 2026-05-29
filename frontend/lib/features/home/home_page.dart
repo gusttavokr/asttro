@@ -1,7 +1,8 @@
 import 'package:asttro/core/layout/app_layout.dart';
-import 'package:asttro/features/home/models/tasks.dart';
+import 'package:asttro/core/models/task.dart';
 import 'package:asttro/features/home/widgets/button_create_task.dart';
 import 'package:asttro/features/home/widgets/task_home.dart';
+import 'package:asttro/features/task/task_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -56,7 +57,19 @@ class HomePageState extends State<HomePage> {
 
                         return _AnimatedTaskItem(
                           index: index,
-                          child: Task(task: task),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => TaskPage(
+                                    task: task,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Task(task: task),
+                          )
                         );
                       },
                     ),

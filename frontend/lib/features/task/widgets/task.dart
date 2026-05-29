@@ -1,4 +1,4 @@
-import 'package:asttro/features/task/models/task.dart';
+import 'package:asttro/core/models/task.dart';
 import 'package:flutter/material.dart';
 
 class Task extends StatefulWidget {

@@ -1,6 +1,5 @@
 import 'package:asttro/core/widgets/background.dart';
 import 'package:asttro/core/widgets/bottom_bar.dart';
-import 'package:asttro/core/widgets/button_create.dart';
 import 'package:asttro/core/widgets/search_bar.dart';
 import 'package:asttro/features/home/home_page.dart';
 import 'package:asttro/features/task/task_page.dart';
@@ -112,10 +111,10 @@ class AppLayout extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const HomePage())
               ); 
             case 1:
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const TaskPage())
-              ); // Temporario
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const TaskPage())
+              // ); // Temporario
           }
         },
       ),

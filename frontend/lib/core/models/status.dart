@@ -1,5 +1,5 @@
 enum Status {
   emAndamento,
-  atrasado,
+  pendente,
   concluido,
 }

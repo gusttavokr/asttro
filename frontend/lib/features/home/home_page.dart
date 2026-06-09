@@ -48,28 +48,69 @@ class HomePageState extends State<HomePage> {
                         'Nenhuma tarefa encontrada',
                       ),
                     )
-                  : ListView.separated(
+                  : ReorderableListView.builder(
                       padding: const EdgeInsets.all(16),
                       itemCount: filteredTasks.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 16),
+
+                      // calculo de re-ordenar
+                      onReorder: (int antigo, int novo) {
+                        setState(() {
+                          if (antigo < novo) {
+                            novo -= 1;
+                          } 
+
+                          final TaskModel item = filteredTasks.removeAt(antigo);
+                          filteredTasks.insert(novo, item);
+                        });
+                      },
+
+                      proxyDecorator: (Widget child, int index, Animation<double> animation) {
+                        return AnimatedBuilder(
+                          animation: animation,
+                          builder: (BuildContext context, Widget? child) {
+                            // Controla a suavidade da animação de escala/elevação ao descolar o card
+                            final double animValue = CurvedAnimation(
+                              parent: animation,
+                              curve: Curves.easeInOut,
+                            ).value;
+
+                            return Material(
+                              type: MaterialType.card,
+                              elevation: 4, // Altura da sombra projetada
+                              shadowColor: Colors.black45, // Cor da sombra
+                            
+                              color: Colors.transparent,                               
+                              borderRadius: BorderRadius.circular(12), 
+                              
+                              child: child,
+                            );
+                          },
+                          child: child,
+                        );
+                      },
+
                       itemBuilder: (context, index) {
                         final task = filteredTasks[index];
 
                         return _AnimatedTaskItem(
+                          key: ValueKey(task.title + index.toString()),
                           index: index,
-                          child: GestureDetector(
-                            onTap: (){
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => TaskPage(
-                                    task: task,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: GestureDetector(
+                              onDoubleTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => TaskPage(
+                                      task: task,
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                            child: Task(task: task),
-                          )
+                                );
+                              },
+                              child: Task(task: task),
+                            ),
+                          ),
                         );
                       },
                     ),
@@ -87,7 +128,8 @@ class _AnimatedTaskItem extends StatefulWidget {
   final Widget child;
   final int index;
 
-  const _AnimatedTaskItem({super.key, required this.child, required this.index});
+  const _AnimatedTaskItem(
+      {super.key, required this.child, required this.index});
 
   @override
   State<_AnimatedTaskItem> createState() => _AnimatedTaskItemState();
@@ -104,8 +146,7 @@ class _AnimatedTaskItemState extends State<_AnimatedTaskItem>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(
-          milliseconds: 600), 
+      duration: const Duration(milliseconds: 600),
     );
 
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -123,10 +164,8 @@ class _AnimatedTaskItemState extends State<_AnimatedTaskItem>
   }
 
   void _startAnimation() async {
-
     int delayIndex = widget.index > 10 ? 10 : widget.index;
-    await Future.delayed(Duration(
-        milliseconds: 150 * delayIndex)); 
+    await Future.delayed(Duration(milliseconds: 150 * delayIndex));
     if (mounted) {
       _controller.forward();
     }

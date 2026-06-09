@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 class AppLayout extends StatelessWidget {
   final String breadcrumb;
   final String title;
+  final Widget? titleWidget;
   final Widget child;
   final int currentIndex;
   final Function(String)? onSearch;
@@ -16,6 +17,7 @@ class AppLayout extends StatelessWidget {
     super.key,
     required this.breadcrumb,
     required this.title,
+    this.titleWidget,
     required this.child,
     this.currentIndex = 0,
     this.onSearch,
@@ -70,7 +72,7 @@ class AppLayout extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text(
+                            child: titleWidget ?? Text(
                               title,
                               style: const TextStyle(
                                 fontSize: 24,
@@ -103,18 +105,15 @@ class AppLayout extends StatelessWidget {
             return;
           }
 
-
-          switch (index){
+          switch (index) {
             case 0:
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const HomePage())
-              ); 
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             case 1:
-              // Navigator.pushReplacement(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const TaskPage())
-              // ); // Temporario
+            // Navigator.pushReplacement(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const TaskPage())
+            // ); // Temporario
           }
         },
       ),

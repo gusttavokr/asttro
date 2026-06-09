@@ -28,10 +28,8 @@ class TaskState extends State<Task> {
 
   @override
   Widget build(BuildContext context) {
-    // 3. ENVOLVA O CONTAINER NO GESTURE DETECTOR
     return GestureDetector(
       onTap: () {
-        // Isso força a abertura do teclado independente de onde você clique no Container
         FocusScope.of(context).requestFocus(_focusNode);
       },
       child: Container(
@@ -47,12 +45,10 @@ class TaskState extends State<Task> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   // Opcionlamente, você também pode usar 'Expanded' diretamente no TextField se quiser que
-                   // ele empurre pra baixo toda a barra vazia, mas o FocusNode é a melhor alternativa!
 
                   TextField(
                     cursorColor: Color(0xFFFFFFFF),
-                    focusNode: _focusNode, // 5. LIGUE O TEXTFIELD AO FOCO
+                    focusNode: _focusNode, 
                     controller: _controller,
                     minLines: 1,
                     maxLines: null,

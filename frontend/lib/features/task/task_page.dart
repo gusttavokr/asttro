@@ -2,6 +2,7 @@ import 'package:asttro/core/layout/app_layout.dart';
 import 'package:asttro/core/models/task.dart';
 import 'package:asttro/features/task/widgets/task.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class TaskPage extends StatefulWidget {
@@ -80,6 +81,7 @@ class TaskPageState extends State<TaskPage>
       breadcrumb: 'Início > Tarefa',
       title: '',
       titleWidget: TextField(
+        keyboardType: TextInputType.visiblePassword,
         controller: _titleController,
         style: const TextStyle(
           color: Colors.white,

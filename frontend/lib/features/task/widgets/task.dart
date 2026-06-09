@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 
 class Task extends StatefulWidget {
   final TaskModel task;
-  const Task({super.key, required this.task});
+
+  const Task({
+    super.key,
+    required this.task,
+  });
 
   @override
   State<Task> createState() => TaskState();
@@ -11,18 +15,20 @@ class Task extends StatefulWidget {
 
 class TaskState extends State<Task> {
   late TextEditingController _controller;
-  final FocusNode _focusNode = FocusNode(); // 1. TRAGA O FOCO PARA CÁ
+  final FocusNode _focusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController(text: widget.task.content);
+    _controller = TextEditingController(
+      text: widget.task.content,
+    );
   }
 
   @override
   void dispose() {
     _controller.dispose();
-    _focusNode.dispose(); // 2. SEMPRE DISPOSE O FOCO
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -33,41 +39,30 @@ class TaskState extends State<Task> {
         FocusScope.of(context).requestFocus(_focusNode);
       },
       child: Container(
+        height: 120, // altura fixa do card
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: const Color(0xFF1C1C28),
           borderRadius: BorderRadius.circular(24),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start, // 4. Mude para 'start' para o alinhamento não ficar centralizado enquanto digita!
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                  TextField(
-                    cursorColor: Color(0xFFFFFFFF),
-                    focusNode: _focusNode, 
-                    controller: _controller,
-                    minLines: 1,
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
-                    style: const TextStyle(
-                      color: Color(0xFFFEFDFB),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      isDense: true,
-                      contentPadding: EdgeInsets.all(16),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+        child: TextField(
+          focusNode: _focusNode,
+          controller: _controller,
+          cursorColor: Colors.white,
+          expands: true, // ocupa toda a altura disponível
+          minLines: null,
+          maxLines: null,
+          keyboardType: TextInputType.multiline,
+          textAlignVertical: TextAlignVertical.top,
+          style: const TextStyle(
+            color: Color(0xFFFEFDFB),
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.all(16),
+          ),
         ),
       ),
     );

@@ -20,7 +20,6 @@ class TaskPageState extends State<TaskPage>
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
 
-  // 1. Declaração dos controladores para os TextFields
   late TextEditingController _titleController;
   late TextEditingController _dateController;
   late TextEditingController _statusController;
@@ -29,7 +28,6 @@ class TaskPageState extends State<TaskPage>
   void initState() {
     super.initState();
 
-    // 2. Inicialização dos controladores com os dados da Task
     _titleController = TextEditingController(text: widget.task.title);
     _dateController = TextEditingController(
       text: DateFormat('dd/MM/yyyy').format(widget.task.dateCreate),

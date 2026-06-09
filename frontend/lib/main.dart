@@ -45,6 +45,11 @@ class MyApp extends StatelessWidget {
             },
           ),
 
+          textSelectionTheme: const TextSelectionThemeData(
+            cursorColor: Color(0xFF1D61E7),          // cor do palitinho que fica piscando
+            selectionHandleColor: Color(0xFF1D61E7), //  cor da bolinha/gotinha de arrastar
+          ),
+
           fontFamily: 'Inter',
           useMaterial3: true,
 

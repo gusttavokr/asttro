@@ -138,20 +138,53 @@ class TaskPageState extends State<TaskPage>
                       ),
                     )),
                     const SizedBox(width: 16),
+
+                    // status selectbox
                     Expanded(
-                        child: TextField(
-                      controller: _statusController,
-                      style: const TextStyle(color: Colors.white),
-                      readOnly: true,
-                      decoration: const InputDecoration(
-                        labelText: 'Status',
-                        labelStyle: TextStyle(color: Colors.white60),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white30)),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                      ),
-                    )),
+                      child: DropdownButtonFormField<String>(
+
+                        initialValue: widget.task.status.toString().split('.').last,
+
+                        dropdownColor: Colors.white,
+
+                        borderRadius: BorderRadius.circular(12),
+
+                        items: const [
+                          DropdownMenuItem(value: 'pendente', child: Text('Pendente', style: TextStyle(color: Colors.black))),
+                          DropdownMenuItem(value: 'emAndamento', child: Text('Em Andamento', style: TextStyle(color: Colors.black))),
+                          DropdownMenuItem(value: 'concluido', child: Text('Concluído', style: TextStyle(color: Colors.black)))
+                        ],
+
+                        selectedItemBuilder: (BuildContext context) {
+                          return [
+                            'Pendente',
+                            'Em Andamento',
+                            'Concluído',
+                          ].map<Widget>((String item) {
+                            return Text(
+                              item,
+                              style: const TextStyle(color: Colors.white), // Altere aqui para a cor que você quiser na tela (ex: Colors.amber, Colors.grey, etc.)
+                            );
+                          }).toList();
+                        },
+
+
+                        onChanged: (newValue) {
+                          if (newValue != null) {
+                            setState(() {
+                              _statusController.text = newValue; 
+                            });
+                          }
+                        },
+                      
+                        decoration: InputDecoration(
+                          labelText: 'Status',
+                          labelStyle: TextStyle(color: Colors.white60),
+                          enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white30)),
+                          focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                        ),
+                      )
+                    ),
                   ],
                 ),
               ),
